@@ -4,3 +4,11 @@ Obstacles: 960 x 104 (based on proportions from Flappy Bird)
 	  Gap: 250 x 104
 
 Ground: 112 x 640 (from bottom of screen)
+
+Effective:
+	Highest: 125
+	Lowest:  723 (960 - 112 - 125)
+
+With Padding:
+	Highest: 200 (125 + 75)
+	Lowest:  648 (723 - 75)

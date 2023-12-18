@@ -1,32 +1,34 @@
-[gd_scene load_steps=6 format=3 uid="uid://ofa40vwjnqen"]
+[gd_scene load_steps=6 format=3 uid="uid://1mpn33pgn584"]
 
-[ext_resource type="Script" path="res://scripts/obstacle.gd" id="1_3ti6v"]
+[ext_resource type="Script" path="res://scripts/obstacle.gd" id="1_in60h"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_tge2b"]
-size = Vector2(112, 960)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4e33y"]
+size = Vector2(104, 960)
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_vlrvb"]
-size = Vector2(112, 960)
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_gs8f2"]
+size = Vector2(104, 960)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rfhay"]
-size = Vector2(112, 960)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pdbji"]
+size = Vector2(104, 960)
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_dac8g"]
-size = Vector2(112, 960)
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_2538c"]
+size = Vector2(104, 960)
 
-[node name="Obstacle" type="AnimatableBody2D"]
-script = ExtResource("1_3ti6v")
+[node name="ObstacleV2" type="Area2D"]
+collision_layer = 8
+collision_mask = 8
+script = ExtResource("1_in60h")
 
 [node name="Upper" type="CollisionShape2D" parent="."]
 position = Vector2(0, -605)
-shape = SubResource("RectangleShape2D_tge2b")
+shape = SubResource("RectangleShape2D_4e33y")
 
 [node name="Sprite2D" type="Sprite2D" parent="Upper"]
-texture = SubResource("PlaceholderTexture2D_vlrvb")
+texture = SubResource("PlaceholderTexture2D_gs8f2")
 
 [node name="Lower" type="CollisionShape2D" parent="."]
 position = Vector2(0, 605)
-shape = SubResource("RectangleShape2D_rfhay")
+shape = SubResource("RectangleShape2D_pdbji")
 
 [node name="Sprite2D" type="Sprite2D" parent="Lower"]
-texture = SubResource("PlaceholderTexture2D_dac8g")
+texture = SubResource("PlaceholderTexture2D_2538c")
