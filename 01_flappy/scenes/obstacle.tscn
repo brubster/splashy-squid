@@ -1,25 +1,32 @@
-[gd_scene load_steps=5 format=3 uid="uid://dvbck8ji1tfdw"]
+[gd_scene load_steps=6 format=3 uid="uid://ofa40vwjnqen"]
 
 [ext_resource type="Script" path="res://scripts/obstacle.gd" id="1_3ti6v"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dil33"]
-size = Vector2(104, 960)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tge2b"]
+size = Vector2(112, 960)
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_fmubr"]
-size = Vector2(104, 960)
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_vlrvb"]
+size = Vector2(112, 960)
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_dqamu"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rfhay"]
+size = Vector2(112, 960)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_dac8g"]
+size = Vector2(112, 960)
 
 [node name="Obstacle" type="AnimatableBody2D"]
 script = ExtResource("1_3ti6v")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_dil33")
+[node name="Upper" type="CollisionShape2D" parent="."]
+position = Vector2(0, -605)
+shape = SubResource("RectangleShape2D_tge2b")
 
-[node name="TEMP" type="Sprite2D" parent="."]
-texture = SubResource("PlaceholderTexture2D_fmubr")
+[node name="Sprite2D" type="Sprite2D" parent="Upper"]
+texture = SubResource("PlaceholderTexture2D_vlrvb")
 
-[node name="Upper" type="Sprite2D" parent="."]
-texture = SubResource("PlaceholderTexture2D_dqamu")
+[node name="Lower" type="CollisionShape2D" parent="."]
+position = Vector2(0, 605)
+shape = SubResource("RectangleShape2D_rfhay")
 
-[node name="Lower" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="Lower"]
+texture = SubResource("PlaceholderTexture2D_dac8g")

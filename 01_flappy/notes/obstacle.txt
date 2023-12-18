@@ -1,4 +1,4 @@
 Obstacles take 2 seconds from the first frame they are onscreen to the last frame
 
 Obstacle width: 104px
-Obstacle gap: 37px (38?)
+Obstacle gap:   250px

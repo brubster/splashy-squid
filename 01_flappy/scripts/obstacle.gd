@@ -1,15 +1,16 @@
-extends AnimatableBody2D
+extends Node2D
 
 
 var tween: Tween
+
 
 var start_pos: Vector2
 var end_pos: Vector2
 
 
 func _ready() -> void:
-	start_pos = Vector2(692.0, 480.0)
-	end_pos   = Vector2(-52.0, 480.0)
+	start_pos = Vector2(696.0, 480.0)
+	end_pos   = Vector2(-56.0, 480.0)
 	
 	tween = get_tree().create_tween()
 	tween.tween_property(self, "position", end_pos, 2.0)
