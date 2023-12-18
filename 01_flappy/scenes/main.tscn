@@ -1,27 +1,16 @@
 [gd_scene load_steps=4 format=3 uid="uid://dhatjxtb82aec"]
 
-[ext_resource type="PackedScene" uid="uid://betyes6ja46u6" path="res://scenes/flappy.tscn" id="1_5dcx7"]
+[ext_resource type="PackedScene" uid="uid://betyes6ja46u6" path="res://scenes/character.tscn" id="1_5dcx7"]
+[ext_resource type="PackedScene" uid="uid://dvbck8ji1tfdw" path="res://scenes/obstacle.tscn" id="2_od1xc"]
+[ext_resource type="PackedScene" uid="uid://diethwnid64u8" path="res://scenes/ground.tscn" id="3_2f0bf"]
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_opid0"]
+[node name="Main" type="Node"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qewsw"]
-size = Vector2(9.27143, 3.17241)
-
-[node name="main" type="Node"]
-
-[node name="flappy" parent="." instance=ExtResource("1_5dcx7")]
+[node name="Character" parent="." instance=ExtResource("1_5dcx7")]
 position = Vector2(304, 383)
 
-[node name="ground" type="Sprite2D" parent="."]
-position = Vector2(320.5, 938)
-scale = Vector2(653, 56)
-texture = SubResource("PlaceholderTexture2D_opid0")
+[node name="Obstacle" parent="." instance=ExtResource("2_od1xc")]
+position = Vector2(692, 480)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="ground"]
-position = Vector2(-0.490812, -16.75)
-scale = Vector2(0.00153139, 0.0178571)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ground/StaticBody2D"]
-position = Vector2(317.5, 935)
-scale = Vector2(70, 14.5)
-shape = SubResource("RectangleShape2D_qewsw")
+[node name="Ground" parent="." instance=ExtResource("3_2f0bf")]
+position = Vector2(320, 904)

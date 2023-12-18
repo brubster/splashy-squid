@@ -1,0 +1,5 @@
+Screen: 960 x 640 (iPhone 4 screen resolution)
+
+Obstacles: 960 x 104 (based on proportions from Flappy Bird)
+
+Ground: 112 x 640 (from bottom of screen)
