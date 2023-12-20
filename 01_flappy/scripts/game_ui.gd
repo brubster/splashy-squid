@@ -2,6 +2,7 @@ extends Control
 
 
 signal game_ready
+signal game_restart
 
 
 var score: int
@@ -11,6 +12,7 @@ var first_input: bool
 
 func _ready() -> void:
 	first_input = false
+	%GameOverMargin.hide()
 	show()
 	%Anim.set_speed_scale(1.0)
 	%Anim.play("game_ui_fade_in")
@@ -19,7 +21,7 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
-	if not first_input and Input.is_action_just_pressed("flap"):
+	if not first_input and Input.is_action_just_pressed("splash"):
 		first_input = true
 		game_ready.emit()
 		%AnimFadeOut.set_speed_scale(6.0)
@@ -38,8 +40,43 @@ func update_score_label() -> void:
 
 
 func _on_character_death_flash():
+	# Death flash
 	$DeathFlash.show()
 	%Anim.set_speed_scale(2.0)  
 	%Anim.play("death_flash")
-	print("score: " + str(score))
+	await %Anim.animation_finished
+	
+	# Game Over panel
+	%ScoreActual.set_text(str(score))
+	%BestActual.set_text(str(0))
+	%GameOverMargin.show()
+	%Anim.play("game_over_reveal")
+	await %Anim.animation_finished
+	%RestartButton.grab_focus()
  
+
+func _on_restart_button_pressed():
+	# Hide game over UI
+	%Anim.play_backwards("game_over_reveal")
+	await %Anim.animation_finished
+	%GameOverMargin.hide()
+	first_input = false
+	show()
+	%Anim.set_speed_scale(1.0)
+	%Anim.play("game_ui_fade_in")
+	score = 0
+	update_score_label()
+	
+	# Fade to black, reset game
+	$RestartFade.show()
+	%Anim.play("restart_fade_to_black")
+	await %Anim.animation_finished
+	game_restart.emit()
+	%Anim.play_backwards("restart_fade_to_black")
+	await %Anim.animation_finished
+	$RestartFade.hide()
+
+
+func _on_exit_button_pressed():
+	get_tree().quit()
+

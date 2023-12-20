@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bvrv4nj8smlnl"]
+[gd_scene load_steps=10 format=3 uid="uid://bvrv4nj8smlnl"]
 
 [ext_resource type="Script" path="res://scripts/game_ui.gd" id="1_ekj3v"]
 [ext_resource type="FontFile" uid="uid://cbisu3wechjp7" path="res://assets/font/monogram.ttf" id="2_bdr0s"]
@@ -44,7 +44,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../ScreenMargin:modulate")
+tracks/3/path = NodePath("../ScoreMargin:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -52,6 +52,30 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../GameOverAnchor:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-161, 960)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../RestartFade:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_42fek"]
@@ -103,7 +127,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../ScreenMargin:modulate")
+tracks/1/path = NodePath("../ScoreMargin:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -113,12 +137,46 @@ tracks/1/keys = {
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_t3855"]
+resource_name = "game_over_reveal"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../GameOverAnchor:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.4, 1),
+"update": 0,
+"values": [Vector2(-161, 960), Vector2(-161, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_wc72r"]
+resource_name = "restart_fade_to_black"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../RestartFade:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1gykf"]
 _data = {
 "RESET": SubResource("Animation_2wxm7"),
 "death_flash": SubResource("Animation_waf8h"),
+"game_over_reveal": SubResource("Animation_t3855"),
 "game_ui_fade_in": SubResource("Animation_vmagh"),
-"ready_ui_fade_out": SubResource("Animation_42fek")
+"ready_ui_fade_out": SubResource("Animation_42fek"),
+"restart_fade_to_black": SubResource("Animation_wc72r")
 }
 
 [node name="GameUI" type="Control"]
@@ -147,7 +205,8 @@ libraries = {
 "": SubResource("AnimationLibrary_1gykf")
 }
 
-[node name="ScreenMargin" type="MarginContainer" parent="."]
+[node name="ScoreMargin" type="MarginContainer" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -159,13 +218,14 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ScreenMargin"]
+[node name="VBoxContainer" type="VBoxContainer" parent="ScoreMargin"]
 layout_mode = 2
 
-[node name="Score" type="Label" parent="ScreenMargin/VBoxContainer"]
+[node name="Score" type="Label" parent="ScoreMargin/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 0
+mouse_filter = 1
 theme_override_fonts/font = ExtResource("2_bdr0s")
 theme_override_font_sizes/font_size = 90
 horizontal_alignment = 1
@@ -210,6 +270,114 @@ text = "SPACE/LMB ->
 Splash! (TODO)"
 horizontal_alignment = 1
 
+[node name="GameOverAnchor" type="Node2D" parent="."]
+position = Vector2(-161, 960)
+
+[node name="GameOverMargin" type="MarginContainer" parent="GameOverAnchor"]
+unique_name_in_owner = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -290.0
+offset_top = -110.0
+offset_right = 1252.0
+offset_bottom = 930.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 300
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 300
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameOverAnchor/GameOverMargin"]
+layout_mode = 2
+
+[node name="InnerMargin" type="MarginContainer" parent="GameOverAnchor/GameOverMargin/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 300
+theme_override_constants/margin_top = 280
+theme_override_constants/margin_right = 300
+theme_override_constants/margin_bottom = 280
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameOverAnchor/GameOverMargin/VBoxContainer/InnerMargin"]
+layout_mode = 2
+
+[node name="GameOverLabel" type="Label" parent="GameOverAnchor/GameOverMargin/VBoxContainer/InnerMargin/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_fonts/font = ExtResource("2_bdr0s")
+theme_override_font_sizes/font_size = 100
+text = "Game Over"
+horizontal_alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="GameOverAnchor/GameOverMargin/VBoxContainer/InnerMargin/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="GameOverAnchor/GameOverMargin/VBoxContainer/InnerMargin/VBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="GridContainer" type="GridContainer" parent="GameOverAnchor/GameOverMargin/VBoxContainer/InnerMargin/VBoxContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 20
+columns = 2
+
+[node name="ScoreLabel" type="Label" parent="GameOverAnchor/GameOverMargin/VBoxContainer/InnerMargin/VBoxContainer/PanelContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_bdr0s")
+theme_override_font_sizes/font_size = 60
+text = "Score: "
+horizontal_alignment = 2
+
+[node name="ScoreActual" type="Label" parent="GameOverAnchor/GameOverMargin/VBoxContainer/InnerMargin/VBoxContainer/PanelContainer/MarginContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_bdr0s")
+theme_override_font_sizes/font_size = 60
+horizontal_alignment = 2
+
+[node name="BestLabel" type="Label" parent="GameOverAnchor/GameOverMargin/VBoxContainer/InnerMargin/VBoxContainer/PanelContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_bdr0s")
+theme_override_font_sizes/font_size = 60
+text = " Best: "
+horizontal_alignment = 2
+
+[node name="BestActual" type="Label" parent="GameOverAnchor/GameOverMargin/VBoxContainer/InnerMargin/VBoxContainer/PanelContainer/MarginContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_bdr0s")
+theme_override_font_sizes/font_size = 60
+horizontal_alignment = 2
+
+[node name="ButtonMargin" type="MarginContainer" parent="GameOverAnchor/GameOverMargin/VBoxContainer/InnerMargin/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 60
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 60
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameOverAnchor/GameOverMargin/VBoxContainer/InnerMargin/VBoxContainer/ButtonMargin"]
+layout_mode = 2
+
+[node name="RestartButton" type="Button" parent="GameOverAnchor/GameOverMargin/VBoxContainer/InnerMargin/VBoxContainer/ButtonMargin/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_bdr0s")
+theme_override_font_sizes/font_size = 60
+text = "Restart"
+
+[node name="ExitButton" type="Button" parent="GameOverAnchor/GameOverMargin/VBoxContainer/InnerMargin/VBoxContainer/ButtonMargin/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_bdr0s")
+theme_override_font_sizes/font_size = 60
+text = "Exit"
+
 [node name="DeathFlash" type="ColorRect" parent="."]
 visible = false
 layout_mode = 1
@@ -218,4 +386,19 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 color = Color(0.901961, 0.901961, 0.901961, 0.901961)
+
+[node name="RestartFade" type="ColorRect" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[connection signal="pressed" from="GameOverAnchor/GameOverMargin/VBoxContainer/InnerMargin/VBoxContainer/ButtonMargin/VBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="GameOverAnchor/GameOverMargin/VBoxContainer/InnerMargin/VBoxContainer/ButtonMargin/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]

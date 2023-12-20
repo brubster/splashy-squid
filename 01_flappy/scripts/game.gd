@@ -12,6 +12,8 @@ var last_height: float = 480.0
 func _ready() -> void:
 	%GameUI.game_ready.connect(%Character._game_ready)
 	%GameUI.game_ready.connect(_game_ready)
+	%GameUI.game_restart.connect(%Character._game_restart)
+	%GameUI.game_restart.connect(_game_restart)
 
 
 func start_obstacles() -> void:
@@ -53,6 +55,13 @@ func spawn_obstacle() -> void:
 
 
 func _game_ready() -> void:
+	start_obstacles() 
 	get_parent().get_parent().hide_fake_character()
-	start_obstacles()
+
+
+func _game_restart() -> void:
+	var obstacles: Array[Node] = %Obstacles.get_children()
+	for obstacle in obstacles:
+		obstacle.queue_free()
+	get_parent().get_parent().show_fake_character()
 

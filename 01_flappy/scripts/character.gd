@@ -5,7 +5,7 @@ signal death_flash
 
 
 @export var gravity: float = 2000.0
-@export var flap_velocity: float = -600.0
+@export var splash_velocity: float = -600.0
 
 
 var input_allowed: bool
@@ -13,7 +13,7 @@ var is_dead: bool
 
 
 func _ready() -> void:
-	input_allowed = false
+	set_input_allowed(false)
 	is_dead = false
 	set_physics_process(false)
 	hide()
@@ -38,15 +38,15 @@ func _physics_process(delta: float) -> void:
 
 
 func handle_input() -> void:
-	# Flap
-	if Input.is_action_just_pressed("flap"):
-		velocity.y = flap_velocity
+	# Splash
+	if Input.is_action_just_pressed("splash"):
+		velocity.y = splash_velocity
 
 
 func handle_rotation() -> void:
-	var flap_lerp: float = lerpf(get_rotation_degrees(), (velocity.y * 0.5) - 100.0, 0.05)
-	var flap_rotation: float = clampf(flap_lerp, -35.0, 85.0)
-	set_rotation_degrees(flap_rotation)
+	var splash_lerp: float = lerpf(get_rotation_degrees(), (velocity.y * 0.5) - 100.0, 0.05)
+	var splash_rotation: float = clampf(splash_lerp, -35.0, 85.0)
+	set_rotation_degrees(splash_rotation)
 
 
 # Die by an obstacle
@@ -55,7 +55,7 @@ func die() -> void:
 		return
 	
 	death_flash.emit()
-	velocity.y = flap_velocity  # final "flap", makes hit more impactful? TODO
+	velocity.y = splash_velocity  # final "splash", makes hit more impactful   
 	
 	var tree = get_tree()
 	tree.set_pause(true)
@@ -73,7 +73,7 @@ func die_floor() -> void:
 		return
 	
 	death_flash.emit()
-	velocity.y = flap_velocity + 400.0
+	velocity.y = splash_velocity + 400.0
 	
 	var tree = get_tree()
 	tree.set_pause(true)
@@ -89,8 +89,16 @@ func _game_ready() -> void:
 	set_input_allowed(true)
 	show()
 	set_physics_process(true)
-	velocity.y = flap_velocity
+	velocity.y = splash_velocity
 	move_and_slide()
+
+
+func _game_restart() -> void:
+	set_input_allowed(false)
+	hide()
+	set_physics_process(false)
+	set_position(Vector2(212.0, 400.0))
+	is_dead = false
 
 
 func set_input_allowed(val: bool) -> void:

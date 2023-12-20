@@ -39,7 +39,7 @@ func _process(_delta: float) -> void:
 	if not spawned_next and position.x <= position_to_spawn_next_obstacle:
 		spawn_next.emit()
 		spawned_next = true
-	if not scored and position.x <= 176.0:  # character.pos.x - (obstacle.width / 2) + wiggle_room(20)
+	if not scored and position.x <= 176.0:  # character.pos.x - (obstacle.width / 2) + wiggle_room(20)           
 		increase_score.emit()
 		scored = true
 
