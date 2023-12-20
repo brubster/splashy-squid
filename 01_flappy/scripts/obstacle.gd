@@ -2,6 +2,11 @@ extends Area2D
 
 
 signal spawn_next
+signal increase_score
+
+
+@export var seconds_to_travel_across_screen: float = 2.3    # lower means faster (harder)
+@export var position_to_spawn_next_obstacle: float = 340.0  # higher means spawned earlier (harder)
 
 
 var tween: Tween
@@ -10,9 +15,12 @@ var start_pos: Vector2
 var end_pos: Vector2
 
 var spawned_next: bool
+var scored: bool
 
 
 func _ready() -> void:
+	scored = false
+	
 	var height: float = position.y
 	
 	start_pos = Vector2(696.0, height)
@@ -22,12 +30,16 @@ func _ready() -> void:
 	set_position(start_pos)
 	
 	tween = get_tree().create_tween()
-	tween.tween_property(self, "position", end_pos, 2.4)
+	tween.tween_property(self, "position", end_pos, \
+			seconds_to_travel_across_screen)
 	tween.tween_callback(queue_free)
 
 
 func _process(_delta: float) -> void:
-	if not spawned_next and position.x <= 260.0:  # was 218.0
+	if not spawned_next and position.x <= position_to_spawn_next_obstacle:
 		spawn_next.emit()
 		spawned_next = true
+	if not scored and position.x <= 212.0:
+		increase_score.emit()
+		scored = true
 

@@ -8,6 +8,10 @@ extends CharacterBody2D
 var is_dead: bool = false
 
 
+func _ready() -> void:
+	set_physics_process(true)
+
+
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	velocity.y += gravity * delta
@@ -15,6 +19,9 @@ func _physics_process(delta: float) -> void:
 	if not is_dead:
 		handle_rotation()
 		handle_input()
+	elif is_on_floor():
+		# Prevent weird sliding after death animation
+		set_physics_process(false)
 	
 	move_and_slide()
 
@@ -32,6 +39,8 @@ func handle_rotation() -> void:
 
 
 func die() -> void:
+	velocity.y = flap_velocity  # final "flap", makes hit more impactful? TODO
+	
 	var tree = get_tree()
 	tree.set_pause(true)
 	

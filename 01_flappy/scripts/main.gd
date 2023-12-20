@@ -12,35 +12,37 @@ var last_height: float = 480.0
 func _ready() -> void:
 	var obstacle = obstacle_res.instantiate()
 	obstacle.position.y = randf_range(440.0, 500.0)
-	obstacle.spawn_next.connect(_on_obstacle_spawn_next)
+	obstacle.increase_score.connect(%UserInterface._on_increase_score)
+	obstacle.spawn_next.connect(spawn_obstacle)
 	obstacle.body_entered.connect(%Character._on_obstacle_body_entered)
-	add_child(obstacle)
-
-
-func _on_obstacle_spawn_next() -> void:
-	spawn_obstacle()
+	%Obstacles.add_child(obstacle)
 
 
 func spawn_obstacle() -> void:
 	var height: float = randf_range(200.0, 648.0)
-	#print("height: " + str(height) + "   last_height: " + str(last_height) + "   diff: " + str(height - last_height))
 	
 	# Make sure the difference isn't too big when going up
-	if (height - last_height) > 200.0:
-		height = last_height + 100.0
+	if (height - last_height) > 300.0:
+		#print("\nTOO HIGH")
+		height = last_height + 200.0
 	
 	# Make sure the difference isn't too small either way
-	if (height - last_height) < 0.0:
-		height -= 60.0
-	else:
-		height += 60.0
+	var height_diff = height - last_height
+	#print(str(height_diff))
+	if height_diff < 0.0 and height_diff > -100.0:
+		#print("TOO CLOSE (BELOW)")
+		height = last_height - 300.0
+	elif height_diff >= 0.0 and height_diff < 100.0:
+		#print("TOO CLOSE (ABOVE)")
+		height = last_height + 200.0
 	
 	height = clampf(height, 200.0, 648.0)
-	
 	last_height = height
+	
 	var obstacle: Area2D = obstacle_res.instantiate()
 	obstacle.position.y = height
-	obstacle.spawn_next.connect(_on_obstacle_spawn_next)
+	obstacle.increase_score.connect(%UserInterface._on_increase_score)
+	obstacle.spawn_next.connect(spawn_obstacle)
 	obstacle.body_entered.connect(%Character._on_obstacle_body_entered)
-	add_child(obstacle)
+	%Obstacles.add_child(obstacle)
 
