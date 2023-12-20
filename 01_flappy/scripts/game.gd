@@ -1,6 +1,9 @@
 extends Node
 
 
+signal game_restart
+
+
 @export var diff: float = 960.0 / 2
 
 
@@ -60,8 +63,5 @@ func _game_ready() -> void:
 
 
 func _game_restart() -> void:
-	var obstacles: Array[Node] = %Obstacles.get_children()
-	for obstacle in obstacles:
-		obstacle.queue_free()
-	get_parent().get_parent().show_fake_character()
+	game_restart.emit()
 

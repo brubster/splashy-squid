@@ -6,7 +6,6 @@ signal game_restart
 
 
 var score: int
-
 var first_input: bool
 
 
@@ -46,35 +45,25 @@ func _on_character_death_flash():
 	%Anim.play("death_flash")
 	await %Anim.animation_finished
 	
+	# Save score
+	Saver.save_score(score)
+	
 	# Game Over panel
 	%ScoreActual.set_text(str(score))
-	%BestActual.set_text(str(0))
+	%BestActual.set_text(str(Saver.get_best()))
 	%GameOverMargin.show()
 	%Anim.play("game_over_reveal")
 	await %Anim.animation_finished
 	%RestartButton.grab_focus()
  
 
-func _on_restart_button_pressed():
-	# Hide game over UI
-	%Anim.play_backwards("game_over_reveal")
-	await %Anim.animation_finished
-	%GameOverMargin.hide()
-	first_input = false
-	show()
-	%Anim.set_speed_scale(1.0)
-	%Anim.play("game_ui_fade_in")
-	score = 0
-	update_score_label()
-	
+func _on_restart_button_pressed(): 
 	# Fade to black, reset game
+	%RestartButton.set_disabled(true)
 	$RestartFade.show()
 	%Anim.play("restart_fade_to_black")
 	await %Anim.animation_finished
 	game_restart.emit()
-	%Anim.play_backwards("restart_fade_to_black")
-	await %Anim.animation_finished
-	$RestartFade.hide()
 
 
 func _on_exit_button_pressed():

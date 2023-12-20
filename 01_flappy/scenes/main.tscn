@@ -1,13 +1,55 @@
-[gd_scene load_steps=6 format=3 uid="uid://dhatjxtb82aec"]
+[gd_scene load_steps=8 format=3 uid="uid://dhatjxtb82aec"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_u3cgo"]
 [ext_resource type="PackedScene" uid="uid://diethwnid64u8" path="res://scenes/game/ground.tscn" id="2_6iuii"]
 [ext_resource type="PackedScene" uid="uid://cs10gw2j0jish" path="res://scenes/main_ui.tscn" id="2_lrhvr"]
 [ext_resource type="Texture2D" uid="uid://i3js5un1aas7" path="res://icon.svg" id="2_vogtn"]
-[ext_resource type="PackedScene" uid="uid://b0ac4mq0g1l4e" path="res://scenes/screen_fader.tscn" id="3_35l8w"]
+
+[sub_resource type="Animation" id="Animation_etxy1"]
+resource_name = "fade_to_transparent"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_0s71g"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jnrpr"]
+_data = {
+"RESET": SubResource("Animation_0s71g"),
+"fade_to_transparent": SubResource("Animation_etxy1")
+}
 
 [node name="Main" type="Node"]
 script = ExtResource("1_u3cgo")
+
+[node name="Anim" type="AnimationPlayer" parent="."]
+root_node = NodePath("../RestartFade")
+libraries = {
+"": SubResource("AnimationLibrary_jnrpr")
+}
 
 [node name="Fake" type="Node" parent="."]
 
@@ -26,6 +68,13 @@ unique_name_in_owner = true
 
 [node name="MainUI" parent="." instance=ExtResource("2_lrhvr")]
 
-[node name="ScreenFader" parent="." instance=ExtResource("3_35l8w")]
+[node name="RestartFade" type="ColorRect" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
 
 [connection signal="start_game" from="MainUI" to="." method="_on_main_ui_start_game"]
