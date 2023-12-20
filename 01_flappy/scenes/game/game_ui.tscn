@@ -1,0 +1,221 @@
+[gd_scene load_steps=8 format=3 uid="uid://bvrv4nj8smlnl"]
+
+[ext_resource type="Script" path="res://scripts/game_ui.gd" id="1_ekj3v"]
+[ext_resource type="FontFile" uid="uid://cbisu3wechjp7" path="res://assets/font/monogram.ttf" id="2_bdr0s"]
+
+[sub_resource type="Animation" id="Animation_2wxm7"]
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.901961, 0.901961, 0.901961, 0.901961), Color(0.901961, 0.901961, 0.901961, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../ReadyMargin:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("..:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../ScreenMargin:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_42fek"]
+resource_name = "ready_ui_fade_out"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../ReadyMargin:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_vmagh"]
+resource_name = "game_ui_fade_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_waf8h"]
+resource_name = "death_flash"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.94902, 0.94902, 0.94902, 0.901961), Color(0.94902, 0.94902, 0.94902, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../ScreenMargin:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1gykf"]
+_data = {
+"RESET": SubResource("Animation_2wxm7"),
+"death_flash": SubResource("Animation_waf8h"),
+"game_ui_fade_in": SubResource("Animation_vmagh"),
+"ready_ui_fade_out": SubResource("Animation_42fek")
+}
+
+[node name="GameUI" type="Control"]
+process_mode = 3
+modulate = Color(1, 1, 1, 0)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_ekj3v")
+
+[node name="Anim" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+root_node = NodePath("../DeathFlash")
+libraries = {
+"": SubResource("AnimationLibrary_1gykf")
+}
+
+[node name="AnimFadeOut" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+root_node = NodePath("../DeathFlash")
+libraries = {
+"": SubResource("AnimationLibrary_1gykf")
+}
+
+[node name="ScreenMargin" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScreenMargin"]
+layout_mode = 2
+
+[node name="Score" type="Label" parent="ScreenMargin/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("2_bdr0s")
+theme_override_font_sizes/font_size = 90
+horizontal_alignment = 1
+
+[node name="ReadyMargin" type="MarginContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ReadyMargin"]
+layout_mode = 2
+
+[node name="GetReadyMargin" type="MarginContainer" parent="ReadyMargin/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/margin_top = 200
+
+[node name="GetReadyLabel" type="Label" parent="ReadyMargin/VBoxContainer/GetReadyMargin"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_bdr0s")
+theme_override_font_sizes/font_size = 100
+text = "Get Ready"
+horizontal_alignment = 1
+
+[node name="ControlsMargin" type="MarginContainer" parent="ReadyMargin/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 200
+
+[node name="Label" type="Label" parent="ReadyMargin/VBoxContainer/ControlsMargin"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_bdr0s")
+theme_override_font_sizes/font_size = 80
+text = "SPACE/LMB -> 
+Splash! (TODO)"
+horizontal_alignment = 1
+
+[node name="DeathFlash" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.901961, 0.901961, 0.901961, 0.901961)

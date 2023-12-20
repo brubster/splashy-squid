@@ -1,22 +1,31 @@
-[gd_scene load_steps=5 format=3 uid="uid://dhatjxtb82aec"]
+[gd_scene load_steps=6 format=3 uid="uid://dhatjxtb82aec"]
 
-[ext_resource type="PackedScene" uid="uid://betyes6ja46u6" path="res://scenes/character.tscn" id="1_5dcx7"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_u3cgo"]
-[ext_resource type="PackedScene" uid="uid://diethwnid64u8" path="res://scenes/ground.tscn" id="3_2f0bf"]
-[ext_resource type="PackedScene" uid="uid://bvrv4nj8smlnl" path="res://scenes/user_interface.tscn" id="4_xegph"]
+[ext_resource type="PackedScene" uid="uid://diethwnid64u8" path="res://scenes/game/ground.tscn" id="2_6iuii"]
+[ext_resource type="PackedScene" uid="uid://cs10gw2j0jish" path="res://scenes/main_ui.tscn" id="2_lrhvr"]
+[ext_resource type="Texture2D" uid="uid://i3js5un1aas7" path="res://icon.svg" id="2_vogtn"]
+[ext_resource type="PackedScene" uid="uid://b0ac4mq0g1l4e" path="res://scenes/screen_fader.tscn" id="3_35l8w"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_u3cgo")
 
-[node name="Obstacles" type="Node2D" parent="."]
-unique_name_in_owner = true
+[node name="Fake" type="Node" parent="."]
 
-[node name="Character" parent="." instance=ExtResource("1_5dcx7")]
-unique_name_in_owner = true
-position = Vector2(212, 400)
-
-[node name="Ground" parent="." instance=ExtResource("3_2f0bf")]
+[node name="Ground" parent="Fake" instance=ExtResource("2_6iuii")]
 position = Vector2(320, 904)
 
-[node name="UserInterface" parent="." instance=ExtResource("4_xegph")]
+[node name="FakeCharacter" type="Sprite2D" parent="Fake"]
 unique_name_in_owner = true
+position = Vector2(212, 400)
+scale = Vector2(0.6, 0.4)
+texture = ExtResource("2_vogtn")
+offset = Vector2(0, 0.5)
+
+[node name="World" type="Node" parent="."]
+unique_name_in_owner = true
+
+[node name="MainUI" parent="." instance=ExtResource("2_lrhvr")]
+
+[node name="ScreenFader" parent="." instance=ExtResource("3_35l8w")]
+
+[connection signal="start_game" from="MainUI" to="." method="_on_main_ui_start_game"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://diethwnid64u8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yvymh"]
-size = Vector2(640, 112)
+size = Vector2(640, 105)
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_f8tjv"]
 size = Vector2(640, 112)
@@ -9,6 +9,7 @@ size = Vector2(640, 112)
 [node name="Ground" type="StaticBody2D"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 3.5)
 shape = SubResource("RectangleShape2D_yvymh")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

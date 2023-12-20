@@ -12,3 +12,6 @@ Effective:
 With Padding:
 	Highest: 200 (125 + 75)
 	Lowest:  648 (723 - 75)
+
+Character Position:
+	212px from left side of screen

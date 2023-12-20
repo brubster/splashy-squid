@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://1mpn33pgn584"]
 
-[ext_resource type="Script" path="res://scripts/obstacle.gd" id="1_in60h"]
+[ext_resource type="Script" path="res://scripts/obstacle.gd" id="1_ubynk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4e33y"]
 size = Vector2(104, 960)
@@ -17,7 +17,7 @@ size = Vector2(104, 960)
 [node name="ObstacleV2" type="Area2D"]
 collision_layer = 8
 collision_mask = 8
-script = ExtResource("1_in60h")
+script = ExtResource("1_ubynk")
 
 [node name="Upper" type="CollisionShape2D" parent="."]
 position = Vector2(0, -605)

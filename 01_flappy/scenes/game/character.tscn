@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://betyes6ja46u6"]
 
-[ext_resource type="Script" path="res://scripts/character.gd" id="1_81owy"]
-[ext_resource type="Texture2D" uid="uid://i3js5un1aas7" path="res://icon.svg" id="1_jgsv5"]
+[ext_resource type="Script" path="res://scripts/character.gd" id="1_j42mm"]
+[ext_resource type="Texture2D" uid="uid://i3js5un1aas7" path="res://icon.svg" id="2_pvqqs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rn667"]
 size = Vector2(75, 50)
@@ -10,12 +10,12 @@ size = Vector2(75, 50)
 process_mode = 3
 collision_layer = 9
 collision_mask = 9
-script = ExtResource("1_81owy")
+script = ExtResource("1_j42mm")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -0.500002)
 scale = Vector2(0.6, 0.4)
-texture = ExtResource("1_jgsv5")
+texture = ExtResource("2_pvqqs")
+offset = Vector2(0, -0.5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 0)

@@ -1,0 +1,2 @@
+1. "Game Start" screen, with character floating, ground moving, and tap/press prompt
+2. "Restart" screen, with score and autofocus "restart" button to go back to "Game Start" screen
