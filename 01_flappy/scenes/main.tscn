@@ -1,9 +1,24 @@
 [gd_scene load_steps=8 format=3 uid="uid://dhatjxtb82aec"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_u3cgo"]
-[ext_resource type="PackedScene" uid="uid://diethwnid64u8" path="res://scenes/game/ground.tscn" id="2_6iuii"]
+[ext_resource type="PackedScene" uid="uid://diethwnid64u8" path="res://scenes/ground.tscn" id="2_6iuii"]
 [ext_resource type="PackedScene" uid="uid://cs10gw2j0jish" path="res://scenes/main_ui.tscn" id="2_lrhvr"]
 [ext_resource type="Texture2D" uid="uid://i3js5un1aas7" path="res://icon.svg" id="2_vogtn"]
+
+[sub_resource type="Animation" id="Animation_0s71g"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_etxy1"]
 resource_name = "fade_to_transparent"
@@ -19,21 +34,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_0s71g"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jnrpr"]

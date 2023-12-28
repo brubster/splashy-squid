@@ -7,7 +7,7 @@ signal game_restart
 @export var diff: float = 960.0 / 2
 
 
-var obstacle_res: PackedScene = preload("res://scenes/game/obstacle.tscn")
+var obstacle_res: PackedScene = preload("res://scenes/obstacle.tscn")
 
 var last_height: float = 480.0
 
@@ -36,7 +36,7 @@ func spawn_obstacle() -> void:
 		#print("\nTOO HIGH")
 		height = last_height + 200.0
 	
-	# Make sure the difference isn't too small either way
+	# Make sure the difference isn't too small in either direction
 	var height_diff = height - last_height
 	#print(str(height_diff))
 	if height_diff < 0.0 and height_diff > -100.0:

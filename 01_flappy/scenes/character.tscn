@@ -1,0 +1,50 @@
+[gd_scene load_steps=8 format=3 uid="uid://betyes6ja46u6"]
+
+[ext_resource type="Script" path="res://scripts/character.gd" id="1_j42mm"]
+[ext_resource type="Texture2D" uid="uid://ctwtru34tt1bv" path="res://assets/spritesheet/squid.png" id="2_frnjf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_113qm"]
+atlas = ExtResource("2_frnjf")
+region = Rect2(17, 0, 17, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ddvlm"]
+atlas = ExtResource("2_frnjf")
+region = Rect2(0, 0, 17, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_70nof"]
+atlas = ExtResource("2_frnjf")
+region = Rect2(34, 0, 17, 14)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_iitac"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_113qm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ddvlm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_70nof")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rn667"]
+size = Vector2(75, 50)
+
+[node name="character" type="CharacterBody2D"]
+process_mode = 3
+collision_layer = 9
+collision_mask = 9
+script = ExtResource("1_j42mm")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(4.5, 4.5)
+sprite_frames = SubResource("SpriteFrames_iitac")
+frame_progress = 0.158522
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_rn667")

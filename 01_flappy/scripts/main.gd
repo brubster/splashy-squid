@@ -5,7 +5,7 @@ var game_res: PackedScene
 
 
 func _ready() -> void:
-	game_res = preload("res://scenes/game/game.tscn")
+	game_res = preload("res://scenes/game.tscn")
 
 
 func _on_main_ui_start_game():

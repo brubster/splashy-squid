@@ -15,3 +15,12 @@ With Padding:
 
 Character Position:
 	212px from left side of screen
+
+Character Height:
+	Height: 12px
+	Width:  17px
+
+Obstacle:
+	Height: 160px
+	Width (Top):  26px
+	Width (Stem): 24px

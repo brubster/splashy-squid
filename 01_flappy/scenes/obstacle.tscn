@@ -1,34 +1,34 @@
 [gd_scene load_steps=6 format=3 uid="uid://1mpn33pgn584"]
 
-[ext_resource type="Script" path="res://scripts/obstacle.gd" id="1_ubynk"]
+[ext_resource type="Script" path="res://scripts/obstacle.gd" id="1_0qhjx"]
+[ext_resource type="Texture2D" uid="uid://bx2s4otaylrxf" path="res://assets/spritesheet/pipe_upper.png" id="2_b0ww2"]
+[ext_resource type="Texture2D" uid="uid://bejxbt8hoip0s" path="res://assets/spritesheet/pipe_lower.png" id="3_qmbau"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4e33y"]
-size = Vector2(104, 960)
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_gs8f2"]
 size = Vector2(104, 960)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pdbji"]
 size = Vector2(104, 960)
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_2538c"]
-size = Vector2(104, 960)
-
 [node name="ObstacleV2" type="Area2D"]
 collision_layer = 8
 collision_mask = 8
-script = ExtResource("1_ubynk")
+script = ExtResource("1_0qhjx")
 
 [node name="Upper" type="CollisionShape2D" parent="."]
 position = Vector2(0, -605)
 shape = SubResource("RectangleShape2D_4e33y")
 
 [node name="Sprite2D" type="Sprite2D" parent="Upper"]
-texture = SubResource("PlaceholderTexture2D_gs8f2")
+position = Vector2(0, 120)
+scale = Vector2(4.5, 4.5)
+texture = ExtResource("2_b0ww2")
 
 [node name="Lower" type="CollisionShape2D" parent="."]
 position = Vector2(0, 605)
 shape = SubResource("RectangleShape2D_pdbji")
 
 [node name="Sprite2D" type="Sprite2D" parent="Lower"]
-texture = SubResource("PlaceholderTexture2D_2538c")
+position = Vector2(0, -120)
+scale = Vector2(4.5, 4.5)
+texture = ExtResource("3_qmbau")
