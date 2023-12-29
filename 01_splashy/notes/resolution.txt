@@ -30,3 +30,7 @@ Flappy Bird Sprite Measurements:
 	Ground:
 		Height: 56px
 		Width:  168px
+	
+	Background:
+		Height: 256px
+		Width:  144px

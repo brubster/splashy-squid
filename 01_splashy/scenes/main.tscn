@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://dhatjxtb82aec"]
+[gd_scene load_steps=10 format=3 uid="uid://dhatjxtb82aec"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_u3cgo"]
 [ext_resource type="PackedScene" uid="uid://diethwnid64u8" path="res://scenes/ground.tscn" id="2_6iuii"]
+[ext_resource type="Texture2D" uid="uid://cy6wdch2xusrb" path="res://assets/sprites/background.png" id="2_gxotb"]
 [ext_resource type="PackedScene" uid="uid://cs10gw2j0jish" path="res://scenes/main_ui.tscn" id="2_lrhvr"]
 [ext_resource type="SpriteFrames" uid="uid://p7rd2mp6hode" path="res://assets/sprites/squid_frames.tres" id="4_gliqc"]
 [ext_resource type="Script" path="res://scripts/fake_character.gd" id="5_b4alf"]
@@ -51,6 +52,11 @@ root_node = NodePath("../RestartFade")
 libraries = {
 "": SubResource("AnimationLibrary_jnrpr")
 }
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(324, 520)
+scale = Vector2(4.5, 4.5)
+texture = ExtResource("2_gxotb")
 
 [node name="World" type="Node" parent="."]
 unique_name_in_owner = true
