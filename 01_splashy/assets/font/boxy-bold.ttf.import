@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://cbisu3wechjp7"
-path="res://.godot/imported/monogram.ttf-6027d2f9b018ef0aef3d833115c90555.fontdata"
+uid="uid://db5au1lmpchl5"
+path="res://.godot/imported/boxy-bold.ttf-c01d123fb413318bad62da9ed7c8c641.fontdata"
 
 [deps]
 
-source_file="res://assets/font/monogram.ttf"
-dest_files=["res://.godot/imported/monogram.ttf-6027d2f9b018ef0aef3d833115c90555.fontdata"]
+source_file="res://assets/font/boxy-bold.ttf"
+dest_files=["res://.godot/imported/boxy-bold.ttf-c01d123fb413318bad62da9ed7c8c641.fontdata"]
 
 [params]
 
@@ -26,7 +26,7 @@ oversampling=0.0
 Fallbacks=null
 fallbacks=[]
 Compress=null
-compress=false
+compress=true
 preload=[{
 "chars": [],
 "glyphs": [],

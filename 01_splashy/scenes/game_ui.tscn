@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://bvrv4nj8smlnl"]
+[gd_scene load_steps=11 format=3 uid="uid://bvrv4nj8smlnl"]
 
 [ext_resource type="Script" path="res://scripts/game_ui.gd" id="1_ekj3v"]
 [ext_resource type="FontFile" uid="uid://cbisu3wechjp7" path="res://assets/font/monogram.ttf" id="2_bdr0s"]
+[ext_resource type="FontFile" uid="uid://db5au1lmpchl5" path="res://assets/font/boxy-bold.ttf" id="3_3lirm"]
 
 [sub_resource type="Animation" id="Animation_2wxm7"]
 length = 0.5
@@ -304,8 +305,10 @@ layout_mode = 2
 [node name="GameOverLabel" type="Label" parent="GameOverAnchor/GameOverMargin/VBoxContainer/InnerMargin/VBoxContainer"]
 layout_mode = 2
 mouse_filter = 1
-theme_override_fonts/font = ExtResource("2_bdr0s")
-theme_override_font_sizes/font_size = 100
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = -20
+theme_override_fonts/font = ExtResource("3_3lirm")
+theme_override_font_sizes/font_size = 50
 text = "Game Over"
 horizontal_alignment = 1
 
@@ -376,6 +379,10 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("2_bdr0s")
 theme_override_font_sizes/font_size = 60
 text = "Exit"
+
+[node name="Label" type="Label" parent="GameOverAnchor/GameOverMargin/VBoxContainer/InnerMargin/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 
 [node name="DeathFlash" type="ColorRect" parent="."]
 visible = false

@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://cs10gw2j0jish"]
+[gd_scene load_steps=7 format=3 uid="uid://cs10gw2j0jish"]
 
 [ext_resource type="FontFile" uid="uid://cbisu3wechjp7" path="res://assets/font/monogram.ttf" id="1_oiw14"]
 [ext_resource type="Script" path="res://scripts/main_ui.gd" id="1_v736d"]
+[ext_resource type="Texture2D" uid="uid://gq6okql74d1o" path="res://assets/sprites/title.png" id="2_a4ot0"]
 
 [sub_resource type="Animation" id="Animation_l6354"]
 length = 0.001
@@ -106,11 +107,10 @@ size_flags_horizontal = 4
 size_flags_vertical = 0
 theme_override_constants/margin_top = 200
 
-[node name="Title" type="Label" parent="ScreenMargin/VBoxContainer/TitleAnchor/TitleMargin"]
+[node name="Title" type="TextureRect" parent="ScreenMargin/VBoxContainer/TitleAnchor/TitleMargin"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1_oiw14")
-theme_override_font_sizes/font_size = 100
-text = "Splashy Squid"
+texture = ExtResource("2_a4ot0")
+stretch_mode = 5
 
 [node name="ButtonAnchor" type="Node2D" parent="ScreenMargin/VBoxContainer"]
 position = Vector2(63, 200)
