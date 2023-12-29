@@ -1,0 +1,32 @@
+[gd_resource type="SpriteFrames" load_steps=5 format=3 uid="uid://p7rd2mp6hode"]
+
+[ext_resource type="Texture2D" uid="uid://ctwtru34tt1bv" path="res://assets/sprites/squid.png" id="1_qgbjn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vi053"]
+atlas = ExtResource("1_qgbjn")
+region = Rect2(17, 0, 17, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_813th"]
+atlas = ExtResource("1_qgbjn")
+region = Rect2(0, 0, 17, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v0bw0"]
+atlas = ExtResource("1_qgbjn")
+region = Rect2(34, 0, 17, 14)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vi053")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_813th")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v0bw0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]

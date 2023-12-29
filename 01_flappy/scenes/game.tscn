@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://b4xkoghrf1ovj"]
+[gd_scene load_steps=4 format=3 uid="uid://b4xkoghrf1ovj"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_0xsyv"]
-[ext_resource type="PackedScene" uid="uid://diethwnid64u8" path="res://scenes/ground.tscn" id="2_0t4dj"]
 [ext_resource type="PackedScene" uid="uid://betyes6ja46u6" path="res://scenes/character.tscn" id="3_00n6b"]
 [ext_resource type="PackedScene" uid="uid://bvrv4nj8smlnl" path="res://scenes/game_ui.tscn" id="4_54kve"]
 
@@ -10,9 +9,6 @@ script = ExtResource("1_0xsyv")
 
 [node name="Obstacles" type="Node2D" parent="."]
 unique_name_in_owner = true
-
-[node name="Ground" parent="." instance=ExtResource("2_0t4dj")]
-position = Vector2(320, 904)
 
 [node name="Character" parent="." instance=ExtResource("3_00n6b")]
 unique_name_in_owner = true

@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://dhatjxtb82aec"]
+[gd_scene load_steps=9 format=3 uid="uid://dhatjxtb82aec"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_u3cgo"]
 [ext_resource type="PackedScene" uid="uid://diethwnid64u8" path="res://scenes/ground.tscn" id="2_6iuii"]
 [ext_resource type="PackedScene" uid="uid://cs10gw2j0jish" path="res://scenes/main_ui.tscn" id="2_lrhvr"]
-[ext_resource type="Texture2D" uid="uid://i3js5un1aas7" path="res://icon.svg" id="2_vogtn"]
+[ext_resource type="SpriteFrames" uid="uid://p7rd2mp6hode" path="res://assets/sprites/squid_frames.tres" id="4_gliqc"]
+[ext_resource type="Script" path="res://scripts/fake_character.gd" id="5_b4alf"]
 
 [sub_resource type="Animation" id="Animation_0s71g"]
 length = 0.001
@@ -51,20 +52,18 @@ libraries = {
 "": SubResource("AnimationLibrary_jnrpr")
 }
 
-[node name="Fake" type="Node" parent="."]
-
-[node name="Ground" parent="Fake" instance=ExtResource("2_6iuii")]
-position = Vector2(320, 904)
-
-[node name="FakeCharacter" type="Sprite2D" parent="Fake"]
-unique_name_in_owner = true
-position = Vector2(212, 400)
-scale = Vector2(0.6, 0.4)
-texture = ExtResource("2_vogtn")
-offset = Vector2(0, 0.5)
-
 [node name="World" type="Node" parent="."]
 unique_name_in_owner = true
+
+[node name="FakeCharacter" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(212, 400)
+scale = Vector2(4.5, 4.5)
+sprite_frames = ExtResource("4_gliqc")
+script = ExtResource("5_b4alf")
+
+[node name="Ground" parent="." instance=ExtResource("2_6iuii")]
+position = Vector2(320, 848)
 
 [node name="MainUI" parent="." instance=ExtResource("2_lrhvr")]
 
@@ -75,6 +74,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
 [connection signal="start_game" from="MainUI" to="." method="_on_main_ui_start_game"]

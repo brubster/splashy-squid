@@ -1,6 +1,11 @@
 extends Node
 
 
+@onready var restart_fade: ColorRect = $RestartFade
+@onready var world: Node = %World
+@onready var fake_character: AnimatedSprite2D = %FakeCharacter
+@onready var anim: AnimationPlayer = $Anim
+
 var game_res: PackedScene
 
 
@@ -11,24 +16,23 @@ func _ready() -> void:
 func _on_main_ui_start_game():
 	var game = game_res.instantiate()
 	game.game_restart.connect(_game_restart)
-	%World.add_child(game)
+	world.add_child(game)
 
 
 func _game_restart() -> void:
-	get_tree().set_pause(false)
-	%World.get_child(0).queue_free()
-	show_fake_character() 
+	restart_fade.show()
+	world.get_child(0).queue_free()
+	anim.play("fade_to_transparent")
 	_on_main_ui_start_game()
-	$RestartFade.show()
-	$Anim.play("fade_to_transparent")
-	await $Anim.animation_finished
-	$RestartFade.hide()
+	show_fake_character()
+	get_tree().set_pause(false)
+	anim.seek(0.0)  # necessary to prevent screen flashing
 
 
 func show_fake_character() -> void:
-	%FakeCharacter.show()
+	fake_character.show()
 
 
 func hide_fake_character() -> void:
-	%FakeCharacter.hide()
+	fake_character.hide()
 

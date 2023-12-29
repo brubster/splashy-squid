@@ -4,6 +4,11 @@ extends Node
 signal game_restart
 
 
+@onready var game_ui: Control = %GameUI
+@onready var character: CharacterBody2D = %Character
+@onready var obstacles: Node2D = %Obstacles
+
+
 @export var diff: float = 960.0 / 2
 
 
@@ -13,19 +18,20 @@ var last_height: float = 480.0
 
 
 func _ready() -> void:
-	%GameUI.game_ready.connect(%Character._game_ready)
-	%GameUI.game_ready.connect(_game_ready)
-	%GameUI.game_restart.connect(%Character._game_restart)
-	%GameUI.game_restart.connect(_game_restart)
+	game_ui.game_ready.connect(character._game_ready)
+	game_ui.game_ready.connect(_game_ready)
+	game_ui.game_restart.connect(character._game_restart)
+	game_ui.game_restart.connect(_game_restart)
+	game_ui.set_z_index(1)
 
 
 func start_obstacles() -> void:
 	var obstacle = obstacle_res.instantiate()
 	obstacle.position.y = randf_range(440.0, 500.0)
-	obstacle.increase_score.connect(%GameUI._on_increase_score)
+	obstacle.increase_score.connect(game_ui._on_increase_score)
 	obstacle.spawn_next.connect(spawn_obstacle)
-	obstacle.body_entered.connect(%Character._on_obstacle_body_entered)
-	%Obstacles.add_child(obstacle)
+	obstacle.body_entered.connect(character._on_obstacle_body_entered)
+	obstacles.add_child(obstacle)
 
 
 func spawn_obstacle() -> void:
@@ -51,10 +57,10 @@ func spawn_obstacle() -> void:
 	
 	var obstacle: Area2D = obstacle_res.instantiate()
 	obstacle.position.y = height
-	obstacle.increase_score.connect(%GameUI._on_increase_score)
+	obstacle.increase_score.connect(game_ui._on_increase_score)
 	obstacle.spawn_next.connect(spawn_obstacle)
-	obstacle.body_entered.connect(%Character._on_obstacle_body_entered)
-	%Obstacles.add_child(obstacle)
+	obstacle.body_entered.connect(character._on_obstacle_body_entered)
+	obstacles.add_child(obstacle)
 
 
 func _game_ready() -> void:

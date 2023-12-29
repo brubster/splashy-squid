@@ -8,6 +8,9 @@ signal death_flash
 @export var splash_velocity: float = -600.0
 
 
+@onready var anim_sprite: AnimatedSprite2D = $AnimatedSprite2D
+
+
 var input_allowed: bool
 var is_dead: bool
 
@@ -55,7 +58,7 @@ func die() -> void:
 		return
 	
 	death_flash.emit()
-	$AnimatedSprite2D.stop()
+	anim_sprite.stop()
 	velocity.y = splash_velocity  # final "splash", makes hit more impactful   
 	
 	var tree = get_tree()
@@ -74,7 +77,7 @@ func die_floor() -> void:
 		return
 	
 	death_flash.emit()
-	$AnimatedSprite2D.stop()
+	anim_sprite.stop()
 	velocity.y = splash_velocity + 400.0
 	
 	var tree = get_tree()
@@ -89,7 +92,7 @@ func die_floor() -> void:
 
 func _game_ready() -> void:
 	set_input_allowed(true)
-	$AnimatedSprite2D.play()
+	anim_sprite.play()
 	show()
 	set_physics_process(true)
 	velocity.y = splash_velocity
@@ -99,7 +102,7 @@ func _game_ready() -> void:
 func _game_restart() -> void:
 	set_input_allowed(false)
 	hide()
-	$AnimatedSprite2D.stop()
+	anim_sprite.stop()
 	set_physics_process(false)
 	set_position(Vector2(212.0, 400.0))
 	is_dead = false

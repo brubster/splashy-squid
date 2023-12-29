@@ -4,20 +4,24 @@ extends Control
 signal start_game
 
 
+@onready var anim: AnimationPlayer = $AnimationPlayer
+@onready var play_button: Button = %PlayButton
+
+
 func _ready() -> void:
-	%PlayButton.grab_focus()
+	play_button.grab_focus()
 
 
 func _process(_delta: float) -> void:
 	if Input.is_action_pressed("enter") or Input.is_action_pressed("splash"):
-		%PlayButton.set_pressed(true)
+		play_button.set_pressed(true)
 
 
 func _on_play_button_pressed():
-	%PlayButton.set_disabled(true)
-	$AnimationPlayer.play("start_game")
+	play_button.set_disabled(true)
+	anim.play("start_game")
 	start_game.emit()
-	await $AnimationPlayer.animation_finished
+	await anim.animation_finished
 	hide()
 
 

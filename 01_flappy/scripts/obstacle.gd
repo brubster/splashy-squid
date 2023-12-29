@@ -5,7 +5,7 @@ signal spawn_next
 signal increase_score
 
 
-@export var seconds_to_travel_across_screen: float = 2.3    # lower means faster (harder)
+@export var scroll_speed: float = 5.4
 @export var position_to_spawn_next_obstacle: float = 340.0  # higher means spawned earlier (harder)
 
 
@@ -28,14 +28,11 @@ func _ready() -> void:
 	spawned_next = false
 	
 	set_position(start_pos)
+
+
+func _physics_process(_delta: float) -> void:
+	position.x -= scroll_speed
 	
-	tween = get_tree().create_tween()
-	tween.tween_property(self, "position", end_pos, \
-			seconds_to_travel_across_screen)
-	tween.tween_callback(queue_free)
-
-
-func _process(_delta: float) -> void:
 	if not spawned_next and position.x <= position_to_spawn_next_obstacle:
 		spawn_next.emit()
 		spawned_next = true

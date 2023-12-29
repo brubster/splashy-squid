@@ -1,7 +1,7 @@
 extends StaticBody2D
 
 
-@export var scroll_speed: float = 5.7
+@export var scroll_speed: float = 5.4
 
 
 var floor1: Sprite2D
