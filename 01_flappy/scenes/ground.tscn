@@ -1,16 +1,23 @@
-[gd_scene load_steps=3 format=3 uid="uid://diethwnid64u8"]
+[gd_scene load_steps=4 format=3 uid="uid://diethwnid64u8"]
+
+[ext_resource type="Script" path="res://scripts/ground.gd" id="1_gruoo"]
+[ext_resource type="Texture2D" uid="uid://dpw260etljhat" path="res://assets/sprites/ground.png" id="1_w3ww6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yvymh"]
-size = Vector2(640, 105)
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_f8tjv"]
-size = Vector2(640, 112)
+size = Vector2(864, 234)
 
 [node name="Ground" type="StaticBody2D"]
+script = ExtResource("1_gruoo")
+
+[node name="Floor1" type="Sprite2D" parent="."]
+scale = Vector2(4.5, 4.5)
+texture = ExtResource("1_w3ww6")
+
+[node name="Floor2" type="Sprite2D" parent="."]
+position = Vector2(792, 0)
+scale = Vector2(4.5, 4.5)
+texture = ExtResource("1_w3ww6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 3.5)
+visible = false
 shape = SubResource("RectangleShape2D_yvymh")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = SubResource("PlaceholderTexture2D_f8tjv")
