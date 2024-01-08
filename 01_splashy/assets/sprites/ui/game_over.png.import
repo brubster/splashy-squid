@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bcqdei7tqwsru"
-path="res://.godot/imported/pause_button_pressed.png-ed58ac106f82cd6e5b6e47950195b5f8.ctex"
+uid="uid://bsobynr1wltub"
+path="res://.godot/imported/game_over.png-11855ed79f411a13791fbf5cd7eb550f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/ui/pause_button_pressed.png"
-dest_files=["res://.godot/imported/pause_button_pressed.png-ed58ac106f82cd6e5b6e47950195b5f8.ctex"]
+source_file="res://assets/sprites/ui/game_over.png"
+dest_files=["res://.godot/imported/game_over.png-11855ed79f411a13791fbf5cd7eb550f.ctex"]
 
 [params]
 
@@ -31,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bghruc2isudxt"
-path="res://.godot/imported/Mobile - Flappy Bird - Version 12 Sprites.png-ad6e9ae0968ae3bccb442af10a2540a3.ctex"
+uid="uid://cmpucliiogid4"
+path="res://.godot/imported/play_button_pressed.png-7e2a417d20c317980ec2b62bf1fc24a2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://notes/Mobile - Flappy Bird - Version 12 Sprites.png"
-dest_files=["res://.godot/imported/Mobile - Flappy Bird - Version 12 Sprites.png-ad6e9ae0968ae3bccb442af10a2540a3.ctex"]
+source_file="res://assets/sprites/ui/buttons/play_button_pressed.png"
+dest_files=["res://.godot/imported/play_button_pressed.png-7e2a417d20c317980ec2b62bf1fc24a2.ctex"]
 
 [params]
 

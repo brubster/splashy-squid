@@ -38,8 +38,8 @@ func spawn_obstacle() -> void:
 	var height: float = randf_range(200.0, 648.0)
 	
 	# Make sure the difference isn't too big when going up
-	if (height - last_height) > 300.0:
-		height = last_height + 200.0
+	if (height - last_height) > 200.0:
+		height = last_height + 150.0
 	
 	# Make sure the difference isn't too small in either direction
 	var height_diff = height - last_height

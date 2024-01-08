@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c8sai2020a5ir"
-path="res://.godot/imported/restart_button.png-d5a7640b2d181a7b3c48cf3aeb3d3a2f.ctex"
+uid="uid://cr1y3bh0l03ua"
+path="res://.godot/imported/start_game_button_pressed.png-0ecdba0533b1ea08f0bc939eb81b09fe.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/ui/restart_button.png"
-dest_files=["res://.godot/imported/restart_button.png-d5a7640b2d181a7b3c48cf3aeb3d3a2f.ctex"]
+source_file="res://assets/sprites/ui/buttons/start_game_button_pressed.png"
+dest_files=["res://.godot/imported/start_game_button_pressed.png-0ecdba0533b1ea08f0bc939eb81b09fe.ctex"]
 
 [params]
 

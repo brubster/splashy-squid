@@ -60,12 +60,11 @@ func _on_character_death_flash():
 	Saver.save_score(score)
 	
 	# Game Over panel
-	%ScoreActual.set_text(str(score))
-	%BestActual.set_text(str(Saver.get_best()))
+	%ScoreLabel.set_text(str(score))
+	%BestLabel.set_text(str(Saver.get_best()))
 	game_over_margin.show()
 	anim.play("game_over_reveal")
 	await anim.animation_finished
-	%RestartButton.grab_focus()
  
 
 func _on_restart_button_pressed(): 

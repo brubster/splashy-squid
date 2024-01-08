@@ -1,15 +1,17 @@
-[gd_scene load_steps=22 format=3 uid="uid://bvrv4nj8smlnl"]
+[gd_scene load_steps=27 format=3 uid="uid://bvrv4nj8smlnl"]
 
 [ext_resource type="Script" path="res://scripts/game_ui.gd" id="1_ekj3v"]
-[ext_resource type="Texture2D" uid="uid://dse0go285toy5" path="res://assets/sprites/ui/pause_button.png" id="2_46sj3"]
-[ext_resource type="FontFile" uid="uid://cbisu3wechjp7" path="res://assets/font/monogram.ttf" id="2_bdr0s"]
 [ext_resource type="FontFile" uid="uid://k6c44w3a31b6" path="res://assets/font/numbers.png" id="2_eacxm"]
-[ext_resource type="Texture2D" uid="uid://bcqdei7tqwsru" path="res://assets/sprites/ui/pause_button_pressed.png" id="3_1womg"]
-[ext_resource type="FontFile" uid="uid://db5au1lmpchl5" path="res://assets/font/boxy-bold.ttf" id="3_3lirm"]
-[ext_resource type="Texture2D" uid="uid://cydf825kf5nlj" path="res://assets/sprites/ui/play_button.png" id="5_cp7kw"]
-[ext_resource type="Texture2D" uid="uid://cmpucliiogid4" path="res://assets/sprites/ui/play_button_pressed.png" id="6_h3cge"]
-[ext_resource type="Texture2D" uid="uid://c8sai2020a5ir" path="res://assets/sprites/ui/restart_button.png" id="9_aye3n"]
-[ext_resource type="Texture2D" uid="uid://cgdb48847bmak" path="res://assets/sprites/ui/restart_button_pressed.png" id="10_3o47h"]
+[ext_resource type="Texture2D" uid="uid://dse0go285toy5" path="res://assets/sprites/ui/buttons/pause_button.png" id="3_jisvv"]
+[ext_resource type="Texture2D" uid="uid://bcqdei7tqwsru" path="res://assets/sprites/ui/buttons/pause_button_pressed.png" id="4_bbgey"]
+[ext_resource type="Texture2D" uid="uid://cydf825kf5nlj" path="res://assets/sprites/ui/buttons/play_button.png" id="5_ac16w"]
+[ext_resource type="Texture2D" uid="uid://cmpucliiogid4" path="res://assets/sprites/ui/buttons/play_button_pressed.png" id="6_intjg"]
+[ext_resource type="Texture2D" uid="uid://bsobynr1wltub" path="res://assets/sprites/ui/game_over.png" id="8_ccppf"]
+[ext_resource type="Texture2D" uid="uid://dcas7orgk5nby" path="res://assets/sprites/ui/get_ready.png" id="8_grjxk"]
+[ext_resource type="Texture2D" uid="uid://c8sai2020a5ir" path="res://assets/sprites/ui/buttons/restart_button.png" id="9_fnlb7"]
+[ext_resource type="Texture2D" uid="uid://biw5d8egmyi5k" path="res://assets/sprites/ui/controls.png" id="9_pa51t"]
+[ext_resource type="Texture2D" uid="uid://dq6w5bvrppjnd" path="res://assets/sprites/ui/game_over_panel.png" id="9_uphdb"]
+[ext_resource type="Texture2D" uid="uid://cgdb48847bmak" path="res://assets/sprites/ui/buttons/restart_button_pressed.png" id="10_n7531"]
 
 [sub_resource type="Animation" id="Animation_2wxm7"]
 length = 0.5
@@ -199,6 +201,15 @@ physical_keycode = 4194305
 [sub_resource type="Shortcut" id="Shortcut_wnier"]
 events = [SubResource("InputEventKey_v641l")]
 
+[sub_resource type="InputEventKey" id="InputEventKey_xgk4n"]
+physical_keycode = 4194309
+
+[sub_resource type="InputEventKey" id="InputEventKey_c32aj"]
+physical_keycode = 32
+
+[sub_resource type="Shortcut" id="Shortcut_n5eux"]
+events = [SubResource("InputEventKey_xgk4n"), SubResource("InputEventKey_c32aj")]
+
 [node name="GameUI" type="Control"]
 process_mode = 3
 modulate = Color(1, 1, 1, 0)
@@ -259,8 +270,8 @@ focus_mode = 0
 keep_pressed_outside = true
 shortcut = SubResource("Shortcut_uq2t4")
 shortcut_in_tooltip = false
-texture_normal = ExtResource("2_46sj3")
-texture_pressed = ExtResource("3_1womg")
+texture_normal = ExtResource("3_jisvv")
+texture_pressed = ExtResource("4_bbgey")
 
 [node name="PlayButton" type="TextureButton" parent="ScoreMargin"]
 unique_name_in_owner = true
@@ -271,8 +282,8 @@ size_flags_vertical = 0
 focus_mode = 0
 shortcut = SubResource("Shortcut_wnier")
 shortcut_in_tooltip = false
-texture_normal = ExtResource("5_cp7kw")
-texture_pressed = ExtResource("6_h3cge")
+texture_normal = ExtResource("5_ac16w")
+texture_pressed = ExtResource("6_intjg")
 
 [node name="ReadyMargin" type="MarginContainer" parent="."]
 unique_name_in_owner = true
@@ -297,27 +308,28 @@ mouse_filter = 2
 layout_mode = 2
 size_flags_vertical = 0
 mouse_filter = 2
-theme_override_constants/margin_top = 200
+theme_override_constants/margin_top = 160
 
-[node name="GetReadyLabel" type="Label" parent="ReadyMargin/VBoxContainer/GetReadyMargin"]
+[node name="CenterContainer" type="CenterContainer" parent="ReadyMargin/VBoxContainer/GetReadyMargin"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_bdr0s")
-theme_override_font_sizes/font_size = 100
-text = "Get Ready"
-horizontal_alignment = 1
+
+[node name="GetReadyText" type="TextureRect" parent="ReadyMargin/VBoxContainer/GetReadyMargin/CenterContainer"]
+layout_mode = 2
+texture = ExtResource("8_grjxk")
+stretch_mode = 2
 
 [node name="ControlsMargin" type="MarginContainer" parent="ReadyMargin/VBoxContainer"]
 layout_mode = 2
 mouse_filter = 2
-theme_override_constants/margin_top = 200
+theme_override_constants/margin_top = 240
 
-[node name="Label" type="Label" parent="ReadyMargin/VBoxContainer/ControlsMargin"]
+[node name="CenterContainer" type="CenterContainer" parent="ReadyMargin/VBoxContainer/ControlsMargin"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_bdr0s")
-theme_override_font_sizes/font_size = 80
-text = "SPACE/LMB -> 
-Splash! (TODO)"
-horizontal_alignment = 1
+
+[node name="ControlsText" type="TextureRect" parent="ReadyMargin/VBoxContainer/ControlsMargin/CenterContainer"]
+layout_mode = 2
+texture = ExtResource("9_pa51t")
+stretch_mode = 2
 
 [node name="GameOverAnchor" type="Node2D" parent="."]
 position = Vector2(-161, 960)
@@ -339,91 +351,92 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 300
 theme_override_constants/margin_bottom = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="GameOverAnchor/GameOverMargin"]
-layout_mode = 2
-mouse_filter = 2
-
-[node name="InnerMargin" type="MarginContainer" parent="GameOverAnchor/GameOverMargin/VBoxContainer"]
+[node name="InnerMargin" type="MarginContainer" parent="GameOverAnchor/GameOverMargin"]
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/margin_left = 300
-theme_override_constants/margin_top = 280
+theme_override_constants/margin_top = 380
 theme_override_constants/margin_right = 300
 theme_override_constants/margin_bottom = 280
 
-[node name="VBoxContainer" type="VBoxContainer" parent="GameOverAnchor/GameOverMargin/VBoxContainer/InnerMargin"]
+[node name="CenterContainer" type="CenterContainer" parent="GameOverAnchor/GameOverMargin/InnerMargin"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameOverAnchor/GameOverMargin/InnerMargin/CenterContainer"]
 layout_mode = 2
 mouse_filter = 2
 
-[node name="GameOverLabel" type="Label" parent="GameOverAnchor/GameOverMargin/VBoxContainer/InnerMargin/VBoxContainer"]
+[node name="TextMargin" type="MarginContainer" parent="GameOverAnchor/GameOverMargin/InnerMargin/CenterContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_outline_size = -20
-theme_override_fonts/font = ExtResource("3_3lirm")
-theme_override_font_sizes/font_size = 50
-text = "Game Over"
-horizontal_alignment = 1
-
-[node name="PanelContainer" type="PanelContainer" parent="GameOverAnchor/GameOverMargin/VBoxContainer/InnerMargin/VBoxContainer"]
-layout_mode = 2
-mouse_filter = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="GameOverAnchor/GameOverMargin/VBoxContainer/InnerMargin/VBoxContainer/PanelContainer"]
-layout_mode = 2
-mouse_filter = 2
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 20
-theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="GridContainer" type="GridContainer" parent="GameOverAnchor/GameOverMargin/VBoxContainer/InnerMargin/VBoxContainer/PanelContainer/MarginContainer"]
+[node name="CenterContainer" type="CenterContainer" parent="GameOverAnchor/GameOverMargin/InnerMargin/CenterContainer/VBoxContainer/TextMargin"]
 layout_mode = 2
-theme_override_constants/h_separation = 20
-theme_override_constants/v_separation = 20
-columns = 2
 
-[node name="ScoreLabel" type="Label" parent="GameOverAnchor/GameOverMargin/VBoxContainer/InnerMargin/VBoxContainer/PanelContainer/MarginContainer/GridContainer"]
+[node name="GameOverText" type="TextureRect" parent="GameOverAnchor/GameOverMargin/InnerMargin/CenterContainer/VBoxContainer/TextMargin/CenterContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_bdr0s")
-theme_override_font_sizes/font_size = 60
-text = "Score: "
-horizontal_alignment = 2
+texture = ExtResource("8_ccppf")
+stretch_mode = 2
 
-[node name="ScoreActual" type="Label" parent="GameOverAnchor/GameOverMargin/VBoxContainer/InnerMargin/VBoxContainer/PanelContainer/MarginContainer/GridContainer"]
+[node name="GameOverPanel" type="TextureRect" parent="GameOverAnchor/GameOverMargin/InnerMargin/CenterContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("9_uphdb")
+stretch_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="GameOverAnchor/GameOverMargin/InnerMargin/CenterContainer/VBoxContainer/GameOverPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 100
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GameOverAnchor/GameOverMargin/InnerMargin/CenterContainer/VBoxContainer/GameOverPanel/MarginContainer"]
+layout_mode = 2
+
+[node name="ScoreLabel" type="Label" parent="GameOverAnchor/GameOverMargin/InnerMargin/CenterContainer/VBoxContainer/GameOverPanel/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_bdr0s")
-theme_override_font_sizes/font_size = 60
-horizontal_alignment = 2
+size_flags_horizontal = 6
+theme_override_fonts/font = ExtResource("2_eacxm")
+theme_override_font_sizes/font_size = 72
+text = "0"
 
-[node name="BestLabel" type="Label" parent="GameOverAnchor/GameOverMargin/VBoxContainer/InnerMargin/VBoxContainer/PanelContainer/MarginContainer/GridContainer"]
+[node name="Spacing" type="MarginContainer" parent="GameOverAnchor/GameOverMargin/InnerMargin/CenterContainer/VBoxContainer/GameOverPanel/MarginContainer/HBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_bdr0s")
-theme_override_font_sizes/font_size = 60
-text = " Best: "
-horizontal_alignment = 2
+theme_override_constants/margin_left = 90
+theme_override_constants/margin_right = 90
 
-[node name="BestActual" type="Label" parent="GameOverAnchor/GameOverMargin/VBoxContainer/InnerMargin/VBoxContainer/PanelContainer/MarginContainer/GridContainer"]
+[node name="BestLabel" type="Label" parent="GameOverAnchor/GameOverMargin/InnerMargin/CenterContainer/VBoxContainer/GameOverPanel/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_bdr0s")
-theme_override_font_sizes/font_size = 60
+size_flags_horizontal = 6
+theme_override_fonts/font = ExtResource("2_eacxm")
+theme_override_font_sizes/font_size = 72
+text = "10"
 horizontal_alignment = 2
 
-[node name="ButtonMargin" type="MarginContainer" parent="GameOverAnchor/GameOverMargin/VBoxContainer/InnerMargin/VBoxContainer"]
+[node name="ButtonMargin" type="MarginContainer" parent="GameOverAnchor/GameOverMargin/InnerMargin/CenterContainer/VBoxContainer"]
 layout_mode = 2
 mouse_filter = 2
-theme_override_constants/margin_left = 60
-theme_override_constants/margin_top = 100
-theme_override_constants/margin_right = 60
+theme_override_constants/margin_top = 20
 
-[node name="RestartButton" type="TextureButton" parent="GameOverAnchor/GameOverMargin/VBoxContainer/InnerMargin/VBoxContainer/ButtonMargin"]
+[node name="CenterContainer" type="CenterContainer" parent="GameOverAnchor/GameOverMargin/InnerMargin/CenterContainer/VBoxContainer/ButtonMargin"]
+layout_mode = 2
+
+[node name="RestartButton" type="TextureButton" parent="GameOverAnchor/GameOverMargin/InnerMargin/CenterContainer/VBoxContainer/ButtonMargin/CenterContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
-texture_normal = ExtResource("9_aye3n")
-texture_pressed = ExtResource("10_3o47h")
+focus_mode = 0
+shortcut = SubResource("Shortcut_n5eux")
+shortcut_in_tooltip = false
+texture_normal = ExtResource("9_fnlb7")
+texture_pressed = ExtResource("10_n7531")
 
 [node name="DeathFlash" type="ColorRect" parent="."]
 visible = false
@@ -450,4 +463,4 @@ color = Color(0, 0, 0, 1)
 
 [connection signal="pressed" from="ScoreMargin/PauseButton" to="." method="_on_pause_button_pressed"]
 [connection signal="pressed" from="ScoreMargin/PlayButton" to="." method="_on_play_button_pressed"]
-[connection signal="pressed" from="GameOverAnchor/GameOverMargin/VBoxContainer/InnerMargin/VBoxContainer/ButtonMargin/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="GameOverAnchor/GameOverMargin/InnerMargin/CenterContainer/VBoxContainer/ButtonMargin/CenterContainer/RestartButton" to="." method="_on_restart_button_pressed"]
