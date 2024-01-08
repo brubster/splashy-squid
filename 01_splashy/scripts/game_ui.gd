@@ -8,14 +8,18 @@ signal game_restart
 @onready var game_over_margin: Control = %GameOverMargin
 @onready var anim: AnimationPlayer = %Anim
 @onready var anim_fade_out: AnimationPlayer = %AnimFadeOut
+@onready var pause_button: BaseButton = %PauseButton
+@onready var play_button: BaseButton = %PlayButton
 
 
 var score: int
 var first_input: bool
+var paused: bool
 
 
 func _ready() -> void:
 	first_input = false
+	paused = false
 	game_over_margin.hide()
 	show()
 	anim.set_speed_scale(1.0)
@@ -24,8 +28,10 @@ func _ready() -> void:
 	update_score_label()
 
 
-func _process(_delta: float) -> void:
-	if not first_input and Input.is_action_just_pressed("splash"):
+func _unhandled_input(event: InputEvent) -> void:
+	if paused:
+		return
+	if not first_input and event.is_action_pressed("splash"):
 		first_input = true
 		game_ready.emit()
 		anim_fade_out.set_speed_scale(6.0)
@@ -73,4 +79,31 @@ func _on_restart_button_pressed():
 
 func _on_exit_button_pressed():
 	get_tree().quit()
+ 
+
+func _on_pause_button_pressed():
+	# In this case, the player has died, so the game should not get unpaused by the button
+	if not paused and get_tree().is_paused():
+		return
+	switch_pause_buttons()
+	paused = true
+	get_tree().set_pause(true)
+
+
+func _on_play_button_pressed():
+	# In this case, the player has died, so the game should not get unpaused by the button
+	if not paused and get_tree().is_paused():
+		return
+	switch_pause_buttons()
+	paused = false
+	get_tree().set_pause(false)
+
+
+func switch_pause_buttons() -> void:
+	if paused:
+		play_button.hide()
+		pause_button.show()
+	else:
+		pause_button.hide()
+		play_button.show()
 

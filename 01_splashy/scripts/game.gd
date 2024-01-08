@@ -39,17 +39,13 @@ func spawn_obstacle() -> void:
 	
 	# Make sure the difference isn't too big when going up
 	if (height - last_height) > 300.0:
-		#print("\nTOO HIGH")
 		height = last_height + 200.0
 	
 	# Make sure the difference isn't too small in either direction
 	var height_diff = height - last_height
-	#print(str(height_diff))
 	if height_diff < 0.0 and height_diff > -100.0:
-		#print("TOO CLOSE (BELOW)")
 		height = last_height - 300.0
 	elif height_diff >= 0.0 and height_diff < 100.0:
-		#print("TOO CLOSE (ABOVE)")
 		height = last_height + 200.0
 	
 	height = clampf(height, 200.0, 648.0)

@@ -32,7 +32,7 @@ func _physics_process(delta: float) -> void:
 	
 	if not is_dead:
 		handle_rotation()
-		handle_input()
+		# _unhandled_input is used to gather input
 	elif is_on_floor():
 		# Prevent weird sliding after death animation
 		set_physics_process(false)
@@ -40,9 +40,10 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 
-func handle_input() -> void:
-	# Splash
-	if Input.is_action_just_pressed("splash"):
+func _unhandled_input(event: InputEvent) -> void:
+	if is_dead:
+		return
+	if event.is_action_pressed("splash"):
 		velocity.y = splash_velocity
 
 
@@ -61,6 +62,7 @@ func die() -> void:
 	anim_sprite.stop()
 	velocity.y = splash_velocity  # final "splash", makes hit more impactful   
 	
+	set_process_mode(ProcessMode.PROCESS_MODE_ALWAYS)
 	var tree = get_tree()
 	tree.set_pause(true)
 	
@@ -80,6 +82,7 @@ func die_floor() -> void:
 	anim_sprite.stop()
 	velocity.y = splash_velocity + 400.0
 	
+	set_process_mode(ProcessMode.PROCESS_MODE_ALWAYS)
 	var tree = get_tree()
 	tree.set_pause(true)
 	
@@ -103,6 +106,7 @@ func _game_restart() -> void:
 	set_input_allowed(false)
 	hide()
 	anim_sprite.stop()
+	set_process_mode(ProcessMode.PROCESS_MODE_INHERIT)
 	set_physics_process(false)
 	set_position(Vector2(212.0, 400.0))
 	is_dead = false

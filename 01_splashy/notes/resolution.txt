@@ -17,7 +17,7 @@ Character Position:
 	212px from left side of screen
 
 
-Flappy Bird Sprite Measurements:
+Flappy Sprite Measurements:
 	Character Height:
 		Height: 12px
 		Width:  17px
