@@ -114,7 +114,10 @@ theme_override_constants/margin_left = 220
 theme_override_constants/margin_top = 200
 theme_override_constants/margin_right = 220
 
-[node name="PlayButton" type="TextureButton" parent="ButtonAnchor/ButtonMargin"]
+[node name="CenterContainer" type="CenterContainer" parent="ButtonAnchor/ButtonMargin"]
+layout_mode = 2
+
+[node name="PlayButton" type="TextureButton" parent="ButtonAnchor/ButtonMargin/CenterContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
@@ -125,4 +128,4 @@ shortcut_in_tooltip = false
 texture_normal = ExtResource("3_hpsnp")
 texture_pressed = ExtResource("4_tiuow")
 
-[connection signal="pressed" from="ButtonAnchor/ButtonMargin/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="ButtonAnchor/ButtonMargin/CenterContainer/PlayButton" to="." method="_on_play_button_pressed"]
