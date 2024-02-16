@@ -8,7 +8,7 @@ Made with the [Godot](https://godotengine.org) 4.2 game engine.
 
 Press `Left Mouse` or `Space` to "splash" yourself upwards. Avoid obstacles and make it as far as you can!
 
-![[assets/screenshot.png]]
+![](https://github.com/brubster/splashy-squid/blob/main/assets/screenshot.png)
 
 ## License
 
