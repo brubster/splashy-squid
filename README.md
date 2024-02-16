@@ -1,8 +1,10 @@
 # Splashy Squid
 
-A Flappy Bird clone that takes place under the sea!
+A Flappy Bird clone - under the sea!
 
-Made with the [Godot](https://godotengine.org) 4.2 game engine. 
+Made with the [Godot](https://godotengine.org) (4.2) game engine. 
+
+Play on the web at [https://brubster.itch.io/splashy-squid].
 
 ## Gameplay
 
