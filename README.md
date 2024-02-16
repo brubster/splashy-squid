@@ -2,6 +2,10 @@
 
 A Flappy Bird clone that takes place under the sea!
 
-Made with the [Godot](https://godotengine.org) game engine. 
+Made with the [Godot](https://godotengine.org) 4.2 game engine. 
 
- <p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><span property="dct:title">Splashy Squid</span> by <span property="cc:attributionName">Evan Ohme</span> is marked with <a href="http://creativecommons.org/publicdomain/zero/1.0?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC0 1.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/zero.svg?ref=chooser-v1"></a></p> 
+## Licence
+
+The source code (`scripts/*`) of Splashy Squid is available under the MIT license, found in [`LICENCE.txt`]().
+
+ <p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/">The art (<code>assets/*</code>) of Splashy Squid by Evan Ohme is marked with <a href="http://creativecommons.org/publicdomain/zero/1.0?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC0 1.0</a></p> 
