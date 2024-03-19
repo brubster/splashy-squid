@@ -23,7 +23,7 @@ Saver="*res://scripts/saver.gd"
 
 window/size/viewport_width=640
 window/size/viewport_height=960
-window/size/resizable=false
+window/stretch/mode="viewport"
 window/handheld/orientation=1
 
 [importer_defaults]
