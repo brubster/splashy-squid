@@ -1,11 +1,11 @@
 [gd_scene load_steps=10 format=3 uid="uid://dhatjxtb82aec"]
 
-[ext_resource type="Script" path="res://scripts/main.gd" id="1_u3cgo"]
+[ext_resource type="Script" uid="uid://d0wie22gd7bnn" path="res://scripts/main.gd" id="1_u3cgo"]
 [ext_resource type="PackedScene" uid="uid://diethwnid64u8" path="res://scenes/ground.tscn" id="2_6iuii"]
 [ext_resource type="Texture2D" uid="uid://cy6wdch2xusrb" path="res://assets/sprites/background.png" id="2_gxotb"]
 [ext_resource type="PackedScene" uid="uid://cs10gw2j0jish" path="res://scenes/main_ui.tscn" id="2_lrhvr"]
 [ext_resource type="SpriteFrames" uid="uid://p7rd2mp6hode" path="res://assets/sprites/squid_frames.tres" id="4_gliqc"]
-[ext_resource type="Script" path="res://scripts/fake_character.gd" id="5_b4alf"]
+[ext_resource type="Script" uid="uid://cohkqpve7buuk" path="res://scripts/fake_character.gd" id="5_b4alf"]
 
 [sub_resource type="Animation" id="Animation_0s71g"]
 length = 0.001
@@ -40,8 +40,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jnrpr"]
 _data = {
-"RESET": SubResource("Animation_0s71g"),
-"fade_to_transparent": SubResource("Animation_etxy1")
+&"RESET": SubResource("Animation_0s71g"),
+&"fade_to_transparent": SubResource("Animation_etxy1")
 }
 
 [node name="Main" type="Node"]
@@ -50,7 +50,7 @@ script = ExtResource("1_u3cgo")
 [node name="Anim" type="AnimationPlayer" parent="."]
 root_node = NodePath("../RestartFade")
 libraries = {
-"": SubResource("AnimationLibrary_jnrpr")
+&"": SubResource("AnimationLibrary_jnrpr")
 }
 
 [node name="Background" type="Sprite2D" parent="."]

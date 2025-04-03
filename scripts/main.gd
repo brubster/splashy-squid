@@ -35,4 +35,3 @@ func show_fake_character() -> void:
 
 func hide_fake_character() -> void:
 	fake_character.hide()
-

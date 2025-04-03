@@ -55,6 +55,7 @@ func _on_character_death_flash():
 	anim.set_speed_scale(2.0)  
 	anim.play("death_flash")
 	await anim.animation_finished
+	anim.set_speed_scale(1.0)
 	
 	# Save score
 	Saver.save_score(score)
@@ -105,4 +106,3 @@ func switch_pause_buttons() -> void:
 	else:
 		pause_button.hide()
 		play_button.show()
-

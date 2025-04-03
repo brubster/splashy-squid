@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://1mpn33pgn584"]
 
-[ext_resource type="Script" path="res://scripts/obstacle.gd" id="1_0qhjx"]
+[ext_resource type="Script" uid="uid://x8g2386ppns1" path="res://scripts/obstacle.gd" id="1_0qhjx"]
 [ext_resource type="Texture2D" uid="uid://bx2s4otaylrxf" path="res://assets/sprites/pipe_upper.png" id="2_8p0uy"]
 [ext_resource type="Texture2D" uid="uid://bejxbt8hoip0s" path="res://assets/sprites/pipe_lower.png" id="3_b6jg5"]
 

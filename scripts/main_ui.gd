@@ -14,4 +14,3 @@ func _on_play_button_pressed():
 	start_game.emit()
 	await anim.animation_finished
 	hide()
-

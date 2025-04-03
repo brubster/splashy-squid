@@ -66,4 +66,3 @@ func _game_ready() -> void:
 
 func _game_restart() -> void:
 	game_restart.emit()
-

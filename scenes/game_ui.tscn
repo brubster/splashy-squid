@@ -1,6 +1,6 @@
 [gd_scene load_steps=27 format=3 uid="uid://bvrv4nj8smlnl"]
 
-[ext_resource type="Script" path="res://scripts/game_ui.gd" id="1_ekj3v"]
+[ext_resource type="Script" uid="uid://dultw8kipb7h0" path="res://scripts/game_ui.gd" id="1_ekj3v"]
 [ext_resource type="FontFile" uid="uid://k6c44w3a31b6" path="res://assets/font/numbers.png" id="2_eacxm"]
 [ext_resource type="Texture2D" uid="uid://dse0go285toy5" path="res://assets/sprites/ui/buttons/pause_button.png" id="3_jisvv"]
 [ext_resource type="Texture2D" uid="uid://bcqdei7tqwsru" path="res://assets/sprites/ui/buttons/pause_button_pressed.png" id="4_bbgey"]
@@ -181,12 +181,12 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1gykf"]
 _data = {
-"RESET": SubResource("Animation_2wxm7"),
-"death_flash": SubResource("Animation_waf8h"),
-"game_over_reveal": SubResource("Animation_t3855"),
-"game_ui_fade_in": SubResource("Animation_vmagh"),
-"ready_ui_fade_out": SubResource("Animation_42fek"),
-"restart_fade_to_black": SubResource("Animation_wc72r")
+&"RESET": SubResource("Animation_2wxm7"),
+&"death_flash": SubResource("Animation_waf8h"),
+&"game_over_reveal": SubResource("Animation_t3855"),
+&"game_ui_fade_in": SubResource("Animation_vmagh"),
+&"ready_ui_fade_out": SubResource("Animation_42fek"),
+&"restart_fade_to_black": SubResource("Animation_wc72r")
 }
 
 [sub_resource type="InputEventKey" id="InputEventKey_siive"]
