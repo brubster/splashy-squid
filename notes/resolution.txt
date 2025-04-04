@@ -34,3 +34,7 @@ Flappy Sprite Measurements:
 	Background:
 		Height: 256px
 		Width:  144px
+
+
+Aseprite Exports:
+	Sprites are exported at 500% size

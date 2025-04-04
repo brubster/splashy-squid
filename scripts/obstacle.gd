@@ -39,4 +39,3 @@ func _physics_process(_delta: float) -> void:
 	if not scored and position.x <= 176.0:  # character.pos.x - (obstacle.width / 2) + wiggle_room(20)           
 		increase_score.emit()
 		scored = true
-

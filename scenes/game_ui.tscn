@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://bvrv4nj8smlnl"]
+[gd_scene load_steps=26 format=3 uid="uid://bvrv4nj8smlnl"]
 
 [ext_resource type="Script" uid="uid://dultw8kipb7h0" path="res://scripts/game_ui.gd" id="1_ekj3v"]
 [ext_resource type="FontFile" uid="uid://k6c44w3a31b6" path="res://assets/font/numbers.png" id="2_eacxm"]
@@ -9,7 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://bsobynr1wltub" path="res://assets/sprites/ui/game_over.png" id="8_ccppf"]
 [ext_resource type="Texture2D" uid="uid://dcas7orgk5nby" path="res://assets/sprites/ui/get_ready.png" id="8_grjxk"]
 [ext_resource type="Texture2D" uid="uid://c8sai2020a5ir" path="res://assets/sprites/ui/buttons/restart_button.png" id="9_fnlb7"]
-[ext_resource type="Texture2D" uid="uid://biw5d8egmyi5k" path="res://assets/sprites/ui/controls.png" id="9_pa51t"]
 [ext_resource type="Texture2D" uid="uid://dq6w5bvrppjnd" path="res://assets/sprites/ui/game_over_panel.png" id="9_uphdb"]
 [ext_resource type="Texture2D" uid="uid://cgdb48847bmak" path="res://assets/sprites/ui/buttons/restart_button_pressed.png" id="10_n7531"]
 
@@ -226,14 +225,14 @@ script = ExtResource("1_ekj3v")
 unique_name_in_owner = true
 root_node = NodePath("../DeathFlash")
 libraries = {
-"": SubResource("AnimationLibrary_1gykf")
+&"": SubResource("AnimationLibrary_1gykf")
 }
 
 [node name="AnimFadeOut" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
 root_node = NodePath("../DeathFlash")
 libraries = {
-"": SubResource("AnimationLibrary_1gykf")
+&"": SubResource("AnimationLibrary_1gykf")
 }
 
 [node name="ScoreMargin" type="MarginContainer" parent="."]
@@ -313,7 +312,7 @@ theme_override_constants/margin_top = 160
 [node name="CenterContainer" type="CenterContainer" parent="ReadyMargin/VBoxContainer/GetReadyMargin"]
 layout_mode = 2
 
-[node name="GetReadyText" type="TextureRect" parent="ReadyMargin/VBoxContainer/GetReadyMargin/CenterContainer"]
+[node name="GetReadySprite" type="TextureRect" parent="ReadyMargin/VBoxContainer/GetReadyMargin/CenterContainer"]
 layout_mode = 2
 texture = ExtResource("8_grjxk")
 stretch_mode = 2
@@ -326,9 +325,9 @@ theme_override_constants/margin_top = 240
 [node name="CenterContainer" type="CenterContainer" parent="ReadyMargin/VBoxContainer/ControlsMargin"]
 layout_mode = 2
 
-[node name="ControlsText" type="TextureRect" parent="ReadyMargin/VBoxContainer/ControlsMargin/CenterContainer"]
+[node name="ControlsSprite" type="TextureRect" parent="ReadyMargin/VBoxContainer/ControlsMargin/CenterContainer"]
+unique_name_in_owner = true
 layout_mode = 2
-texture = ExtResource("9_pa51t")
 stretch_mode = 2
 
 [node name="GameOverAnchor" type="Node2D" parent="."]

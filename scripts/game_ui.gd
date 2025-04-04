@@ -11,6 +11,10 @@ signal game_restart
 @onready var pause_button: BaseButton = %PauseButton
 @onready var play_button: BaseButton = %PlayButton
 
+@onready var controls_sprite: TextureRect = %ControlsSprite
+@onready var controls_mouse: CompressedTexture2D = preload("res://assets/sprites/ui/controls_mouse.png")
+@onready var controls_touch: CompressedTexture2D = preload("res://assets/sprites/ui/controls_touch.png")
+
 
 var score: int
 var first_input: bool
@@ -26,6 +30,12 @@ func _ready() -> void:
 	anim.play("game_ui_fade_in")
 	score = 0
 	update_score_label()
+	
+	var os_type: String = OS.get_name()
+	if os_type == "Android" or os_type == "iOS":
+		controls_sprite.texture = controls_touch
+	else:
+		controls_sprite.texture = controls_mouse
 
 
 func _unhandled_input(event: InputEvent) -> void:
