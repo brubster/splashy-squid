@@ -19,4 +19,8 @@ The source code (`scripts/*`) of Splashy Squid is available under the MIT licens
  ## Screenshot
 
 ![](https://github.com/brubster/splashy-squid/blob/main/assets/screenshot.png)
+
+## Todo
+
+- Sound
  
