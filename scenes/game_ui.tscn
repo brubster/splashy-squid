@@ -271,6 +271,8 @@ libraries = {
 }
 
 [node name="ScoreMargin" type="MarginContainer" parent="."]
+unique_name_in_owner = true
+visible = false
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15

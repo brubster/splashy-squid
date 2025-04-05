@@ -45,10 +45,9 @@ func _unhandled_input(event: InputEvent) -> void:
 		first_input = true
 		game_ready.emit()
 		anim_fade_out.set_speed_scale(6.0)
+		%ScoreMargin.show()
 		anim_fade_out.play("ready_ui_fade_out")
 		await anim_fade_out.animation_finished
-		%ReadyMargin.hide()
-	if first_input:
 		%ReadyMargin.hide()
 
 
