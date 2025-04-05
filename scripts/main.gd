@@ -26,7 +26,7 @@ func _game_restart() -> void:
 	_on_main_ui_start_game()
 	show_fake_character()
 	get_tree().set_pause(false)
-	anim.seek(0.0)  # necessary to prevent screen flashing
+	anim.seek(0.0)  # prevent screen flashing
 
 
 func show_fake_character() -> void:

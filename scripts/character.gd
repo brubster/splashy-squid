@@ -118,4 +118,3 @@ func set_input_allowed(val: bool) -> void:
 
 func _on_obstacle_body_entered(_area) -> void:
 	die()
-

@@ -22,6 +22,7 @@ func _ready() -> void:
 	game_ui.game_ready.connect(_game_ready)
 	game_ui.game_restart.connect(character._game_restart)
 	game_ui.game_restart.connect(_game_restart)
+	await get_tree().create_timer(0.5).timeout
 	game_ui.set_z_index(1)
 
 

@@ -48,6 +48,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		anim_fade_out.play("ready_ui_fade_out")
 		await anim_fade_out.animation_finished
 		%ReadyMargin.hide()
+	if first_input:
+		%ReadyMargin.hide()
 
 
 func _on_increase_score() -> void:
